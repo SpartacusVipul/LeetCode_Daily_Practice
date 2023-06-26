@@ -11,8 +11,8 @@ public:
             if (s[i] == '(' || s[i] == '[' || s[i] == '{') {
                 st.push_back(s[i]);
             } else {
-                if (st.size() == 0) {
-                    return false;
+                if (st.size() == 0) { // important conditions to handle some edge cases
+                    return false; // where if only cloising brackets are inserted (stack will be empty), then automatically false
                 }
                 char topElement = st[st.size() - 1];
                 st.pop_back();

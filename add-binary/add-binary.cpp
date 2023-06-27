@@ -1,5 +1,7 @@
 class Solution {
 public:
+    // just iterate from the end, 
+    // have sum and carry vars
     string addBinary(string a, string b) {
         int aPos = a.size() - 1;
         int bPos = b.size() - 1;

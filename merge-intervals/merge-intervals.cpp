@@ -34,4 +34,27 @@ public:
         mergedIntervals.push_back({winStart, winEnd});
         return mergedIntervals;
     }
+
+    vector<vector<int>> merge_interval_vec(vector<vector<int>>& intervals) {
+        vector<vector<int>> mergedIntervals;
+        if (intervals.size() == 0) {
+            return mergedIntervals;
+        }
+
+        sort(intervals.begin(), intervals.end(), compareInterval);
+        vector<int> tempInterval = intervals[0];
+        int endIndex = 0; 
+        while(endIndex < intervals.size()) {
+            if (intervals[endIndex][0] <= tempInterval[1]) {
+                tempInterval[1] = max(intervals[endIndex][1], tempInterval[1]);
+                endIndex++;
+            } else {
+                mergedIntervals.push_back(tempInterval);
+                tempInterval = intervals[endIndex];
+                endIndex++;
+            }
+        }
+        mergedIntervals.push_back(tempInterval);
+        return mergedIntervals;
+    }
 };

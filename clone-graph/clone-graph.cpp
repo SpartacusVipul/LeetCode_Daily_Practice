@@ -21,6 +21,12 @@ public:
 
 class Solution {
 public:
+    // trick is hacing a visited array of nodes and 
+    // for making a copy node for every node and recursively adding neighbours to it
+    // for every node, we create a copy node 
+    // and for all the neighbours, we push back all the new neighbours into 
+    // the copyNodes neighbour vector
+    // recursivley proceed
     Node *cloneHelper(Node *node, vector<Node *> &visited) {
         if (node == NULL) {
             return  NULL;
@@ -31,9 +37,6 @@ public:
 
         Node *copyNode = new Node(node->val);
         visited[copyNode->val] = copyNode; 
-        for (int i = 0; i < 5; i++) {
-            cout << visited[i] << endl;
-        }
         for (int i = 0; i < node->neighbors.size(); i++) {
             copyNode->neighbors.push_back(cloneHelper(node->neighbors[i], visited));
 

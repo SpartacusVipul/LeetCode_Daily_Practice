@@ -11,6 +11,9 @@
  */
 class Solution {
 public:
+    // having global variable totalSUm 
+    // which is updated whenefver we reach a leaf
+    // we have a local variable currentSum is updated in every recursive call
     int totalSum = 0;
     void preorder(TreeNode* root, int currentSum) {
         if (root == NULL) return;

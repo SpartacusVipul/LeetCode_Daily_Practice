@@ -18,6 +18,10 @@ public:
 
 class Solution {
 public:
+    // trick is using a temp node, at the start for each level,
+    // some memory wastage, but overall, doesnt affect anything else
+    // just make temp->next equal to node, update temp to node
+    // finally set temp next to NULL 
     Node* connect(Node* root) {
         if (root == NULL) {
             return root;

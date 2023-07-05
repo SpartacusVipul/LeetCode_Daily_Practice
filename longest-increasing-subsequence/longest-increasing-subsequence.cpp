@@ -18,9 +18,8 @@ public:
     }
 
     int lengthOfLIS(vector<int>& nums) {
-        vector<vector<int>> dp(nums.size(), vector<int>(nums.size() + 1, -1)); 
+        vector<vector<int>> dp(nums.size() + 1, vector<int>(nums.size() + 1, -1)); 
         return mem(0, -1, nums, dp);
-
     }
-    // go through again for tabulation code
+
 };

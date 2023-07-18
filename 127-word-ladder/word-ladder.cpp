@@ -1,5 +1,11 @@
 class Solution {
 public:
+    // basic idea is to maintain a neighbour map to reduce the search area
+    // in every iteration from all elements in the wordList to limited neighbours
+    // this works only because all words are of same size, so 
+    // for a a given word, generate all patterns and insert the word using the pattern as key 
+    // into the neighbour map
+    // now when we pop an element from the queue, we only search within the possible patterns 
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
         queue<pair<string, int>> myQ;
         myQ.push({beginWord, 1});

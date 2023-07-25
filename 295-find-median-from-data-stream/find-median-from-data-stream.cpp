@@ -1,5 +1,15 @@
 class MedianFinder {
 public:
+    // trick is tio use a min Heap and max heap.,
+    // max heap is used to save all elements lower than current median 
+    // min heap is used to save all elements greater than current median 
+    // so idea is new element, if both min and max are zero (base case) then insert the element in mid
+    // now if we get a new element, we check if num >= top from minHeap if yes, then swap num with top element 
+    // and replace mid with top 
+    // if num <= lower then swap num with top element and replace mid with top 
+    // if mid is not INT_MIN, (INT_MIN is used to represnt invalid value is present in mid) 
+    // then we  push lower of mid and num into maxHeap, higher of mid and num into minHeap
+    //while getting if mid is not INMIN then return mid, else top of both heaps by 2 
     priority_queue<int, vector<int>> maxHeap;
     priority_queue<int, vector<int>, greater<int>> minHeap;
     int mid = INT_MIN;
@@ -9,7 +19,6 @@ public:
     }
     
     void addNum(int num) {
-        cout << "add " << mid << " " << num << endl;
         if (mid == INT_MIN) {
             if (minHeap.size() == 0 && maxHeap.size() == 0) {
                 mid = num;
@@ -42,10 +51,8 @@ public:
     double findMedian() {
         
         if (mid != INT_MIN) {
-            cout << mid << endl;
             return mid;
         } else {
-            cout << (double)minHeap.top() + (double)maxHeap.top() << endl;;
             return ((double)minHeap.top() + (double)maxHeap.top()) / 2.0;
         }
         

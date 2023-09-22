@@ -1,5 +1,8 @@
 class Solution {
 public:
+    // there might be a better solution with time complexity O(m + n)
+    // this takes mlogn
+    
     int searchIndex(vector<int>& row) {
         int left = 0, right = row.size() - 1;
         while (left < right) {

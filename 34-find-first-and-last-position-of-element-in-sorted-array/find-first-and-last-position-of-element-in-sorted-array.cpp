@@ -36,6 +36,8 @@ public:
         return {start, end};
     }
 
+    // very strange that right starts from nums.size() not nums.size() - 1
+    // no idea why this is happening
     int binarySearchBiasedOpt(vector<int> &nums, int target, int bias) {
         int left = 0, right = nums.size();
         int index = -1;
